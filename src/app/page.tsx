@@ -1,101 +1,111 @@
-import Image from "next/image";
+import Image from 'next/image'
+import { MessageCircle } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+    <main className="min-h-screen bg-white">
+      {/* Header Background */}
+      <div className="h-40 bg-[#406CAE] relative">
+        {/* <Image
+          src="/placeholder.svg?height=160&width=400"
+          alt="Header illustration"
+          fill
+          className="object-cover opacity-70"
           priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        /> */}
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Profile Section */}
+      <div className="px-4 -mt-20">
+        <div className="flex flex-col items-center text-center">
+          {/* Profile Image */}
+          <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-b-4 border-r-4 border-black bg-yellow-400 relative mb-4">
+            {/* <Image
+              src="/placeholder.svg?height=96&width=96"
+              alt="Profile picture"
+              fill
+              className="object-cover"
+              priority
+            /> */}
+          </div>
+
+          {/* Name and Title */}
+          <div className="flex items-center gap-2 mb-2">
+            <h1 className="text-2xl font-bold">Qie</h1>
+            <div className="w-6 h-6 bg-yellow-400 rounded-lg border-black border" />
+          </div>
+          <p className="text-sm text-gray-600 max-w-[250px] mb-6">
+            A Passionate Software Engineer with Remarkable Management Skill
+          </p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 w-full max-w-sm mb-6">
+            <div className="bg-[#406CAE] rounded-xl border-2 border-b-4 border-r-4 border-black p-3 text-white">
+              <div className="text-xl font-bold">30+</div>
+              <div className="text-xs">Experiences</div>
+            </div>
+            <div className="bg-[#406CAE] rounded-xl border-2 border-b-4 border-r-4 border-black p-3 text-white">
+              <div className="text-xl font-bold">7+</div>
+              <div className="text-xs">Projects</div>
+            </div>
+            <div className="bg-[#406CAE] rounded-xl border-2 border-b-4 border-r-4 border-black p-3 text-white">
+              <div className="text-xl font-bold">10+</div>
+              <div className="text-xs">Tech Stacks</div>
+            </div>
+          </div>
+
+          {/* Contact Button */}
+          <Button 
+            className="w-full max-w-sm bg-yellow-400 hover:bg-yellow-500 text-white mb-6 justify-between py-6 text-xl font-bold"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Contact Now
+            <MessageCircle />
+          </Button>
+
+          {/* Navigation Buttons */}
+          <div className="max-w-sm w-full mb-6 flex flex-row items-start justify-start gap-2">
+            <Button 
+              variant="default" 
+              className="bg-[#406CAE] border-r-4"
+            >
+              Project
+            </Button>
+            <Button 
+              className="bg-white text-black border-r-4"
+            >
+              Experience
+            </Button>
+          </div>
+
+          {/* Project Grid */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
+            {[1, 2, 3, 4].map((item) => (
+              <div key={item} className="border-2 border-b-4 border-r-4 border-black rounded-xl p-3">
+                <div className="aspect-video relative mb-2 border rounded-xl border-black">
+                  {/* <Image
+                    src="/placeholder.svg?height=120&width=200"
+                    alt={`Project ${item}`}
+                    fill
+                    className="object-cover rounded-lg"
+                  /> */}
+                </div>
+                <div className='flex justify-between flex-row items-center mt-4'>
+                  <div className='flex flex-col items-start'>
+                    <h3 className="font-semibold text-xs mb-1">Project Name</h3>
+                    <h4 className="text-xs text-gray-500">Subtitle</h4>
+                  </div>
+                  <div className='flex flex-col items-end'>
+                    <h3 className="font-semibold text-xs mb-1">19/11/24</h3>
+                    <h4 className="text-xs text-gray-500">Created</h4>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </div>
+    </main>
+  )
 }
+
