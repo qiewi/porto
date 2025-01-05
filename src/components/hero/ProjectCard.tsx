@@ -23,7 +23,7 @@ export default function ProjectCard({ id, imagePath, projectName, subtitle, date
       className="border-2 border-b-4 border-r-4 border-black rounded-xl p-3 cursor-pointer"
       onClick={handleNavigate}
     >
-      <div className="aspect-video relative mb-2 border rounded-xl border-black">
+      <div className="aspect-video relative mb-2 border-2 rounded-xl border-black">
         <Image 
           src={imagePath} 
           alt={projectName} 
