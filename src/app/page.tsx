@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react';
+import ProfilePhoto from '@/Images/profile.jpg';
+import { projects } from '@/data/projects';
 import Image from 'next/image';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -63,13 +65,16 @@ export default function Home() {
           <div className="px-8 -mt-16">
             <div className="flex flex-col items-center text-center">
               {/* Profile Image */}
-              <div className="w-40 h-40 rounded-2xl overflow-hidden border-4 border-b-4 border-r-4 border-black bg-yellow-400 relative mb-4">
-                {/* <Image
-                  src="/profile.jpg"
-                  alt="Profile Image"
-                  layout="fill"
-                  objectFit="cover"
-                /> */}
+              <div className="w-40 h-40 rounded-2xl overflow-hidden border-4 border-b-4 border-r-4 border-black bg-yellow-400 relative mb-4 p-2 flex items-center justify-center">
+                <div className="w-full h-full relative">
+                  <Image
+                    src={ProfilePhoto}
+                    alt="Profile Image"
+                    layout="fill"
+                    objectFit="contain"
+                    className='rounded-2xl'
+                  />
+                </div>
               </div>
 
               {/* Name and Title */}
@@ -92,8 +97,8 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 max-w-[250px] mb-6">
-                A Passionate Software Engineer with Remarkable Management Skill
+              <p className="text-sm text-gray-600 max-w-[240px] mb-6">
+                A Wannabe Expert Generalist Loves to Code and Design
               </p>
 
               {/* Stats */}
@@ -108,7 +113,7 @@ export default function Home() {
                 className="w-full max-w-sm bg-yellow-400 text-white mb-6 justify-between py-6 text-xl font-bold"
               >
                 Contact Now
-                <MessageCircle />
+                <MessageCircle/>
               </Button>
 
               {/* Navigation Buttons */}
@@ -121,17 +126,14 @@ export default function Home() {
 
               {/* Project Grid */}
               <div className="grid grid-cols-2 gap-4 w-full max-w-sm mb-8">
-                {[
-                  { title: 'Project Name', subtitle: 'Subtitle', date: '19/11/24' },
-                  { title: 'Project Name', subtitle: 'Subtitle', date: '20/11/24' },
-                  { title: 'Project Name', subtitle: 'Subtitle', date: '21/11/24' },
-                  { title: 'Project Name', subtitle: 'Subtitle', date: '22/11/24' },
-                ].map((project, index) => (
+                {projects.map(({ id, imagePath, projectName, subtitle, date }) => (
                   <ProjectCard
-                    key={index}
-                    title={project.title}
-                    subtitle={project.subtitle}
-                    date={project.date}
+                    key={id}
+                    id={id}
+                    imagePath={imagePath}
+                    projectName={projectName}
+                    subtitle={subtitle}
+                    date={date}
                   />
                 ))}
               </div>
