@@ -1,14 +1,22 @@
-import { notFound } from 'next/navigation'; // For handling 404
-import { projects } from '@/data/projects'; // Import your project data
+"use client"
+
+import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
+import { notFound } from 'next/navigation';
+import { projects } from '@/data/projects';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { use } from 'react';
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function ProjectDetails({ params }: Props) {
-  const { id } = params;
+  // Unwrap the params using use()
+  const { id } = use(params);
 
   // Find the project with the matching id
   const project = projects.find((proj) => proj.id === id);
@@ -19,50 +27,69 @@ export default function ProjectDetails({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen p-8 bg-white">
-      {/* Project Title */}
-      <h1 className="text-3xl font-bold mb-4">{project.projectName}</h1>
-      
-      {/* Project Image */}
-      <div className="aspect-video relative border rounded-lg border-black mb-6">
-        <img
+    <div className="w-full h-full md:max-w-[400px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] bg-white flex flex-col items-center justify-start gap-y-8 px-8">
+      {/* Header */}
+      <div className="w-full flex items-center gap-4 pt-6">
+        <Link href="#" className="p-2 hover:bg-gray-100 rounded-full">
+          <ArrowLeft className="h-6 w-6" />
+        </Link>
+        <h1 className="text-2xl font-bold">Project Details</h1>
+      </div>
+
+      {/* Project Preview */}
+      <div className="w-full aspect-[4/3] relative rounded-2xl overflow-hidden border-4 border-black">
+        <Image
           src={project.imagePath}
           alt={project.projectName}
-          className="w-full h-full object-cover rounded-lg"
+          fill
+          className="w-full h-auto"
         />
       </div>
-      
-      {/* Project Details */}
-      <p className="text-lg mb-4">{project.description}</p>
-      <ul className="list-disc ml-5 mb-4">
-        {project.techStack.map((tech, index) => (
-          <li key={index} className="text-sm">{tech}</li>
-        ))}
-      </ul>
 
-      {/* Links */}
-      <div className="space-y-2">
-        {project.websiteLink && (
-          <a
-            href={project.websiteLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline"
+      {/* Project Info */}
+      <div className="w-full">
+        <div className="flex items-start justify-between mb-2">
+          <div>
+            <h2 className="text-2xl font-bold">{project.projectName}</h2>
+            <p className="text-gray-500">{project.subtitle}</p>
+          </div>
+          <span className="text-gray-900">{project.date}</span>
+        </div>
+
+        {/* Profile */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center text-white text-xl font-bold">
+            Q
+          </div>
+          <div>
+            <h3 className="font-semibold">Qiewi</h3>
+            <p className="text-sm text-gray-500">Github Profile</p>
+          </div>
+        </div>
+
+        <p className="text-gray-600 mb-8">{project.description}</p>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col gap-4 w-full">
+          <Link
+            href="#"
+            className="w-full bg-yellow-400 text-white rounded-xl py-4 px-6 flex items-center justify-between hover:bg-yellow-500 transition-colors"
           >
-            Visit Website
-          </a>
-        )}
-        {project.githubLink && (
-          <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline block"
+            <span className="font-semibold">Check Website</span>
+            <ExternalLink className="h-5 w-5" />
+          </Link>
+          <Link
+            href="#"
+            className="w-full bg-blue-600 text-white rounded-xl py-4 px-6 flex items-center justify-between hover:bg-blue-700 transition-colors"
           >
-            View on GitHub
-          </a>
-        )}
+            <span className="font-semibold">Visit Repository</span>
+            <Github className="h-5 w-5" />
+          </Link>
+        </div>
       </div>
+
+      {/* Bottom Spacing */}
+      <div className="h-8" />
     </div>
   );
 }
