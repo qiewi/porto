@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProfilePhoto from '@/Images/profile.jpg';
 import { projects } from '@/data/projects';
-import { experiences } from '@/data/experiences'; // Add an experience data array
+import { experiences } from '@/data/experiences';
 import Image from 'next/image';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,7 +12,31 @@ import ProjectCard from '@/components/hero/ProjectCard';
 import ExperienceCard from '@/components/hero/ExperienceCard';
 
 export default function Home() {
-  const [view, setView] = useState('project'); // State to toggle between 'project' and 'experience'
+  const [view, setView] = useState('project');
+  const [visibleSections, setVisibleSections] = useState<string[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('[data-section]');
+      const windowHeight = window.innerHeight;
+
+      elements.forEach((el) => {
+        const section = el.getAttribute('data-section');
+        const rect = el.getBoundingClientRect();
+
+        if (rect.top < windowHeight - 100 && section && !visibleSections.includes(section)) {
+          setVisibleSections((prev) => [...prev, section]);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [visibleSections]);
 
   return (
     <main className="w-full h-full md:max-w-[400px] bg-white flex flex-col items-center justify-start gap-y-8">
@@ -92,14 +116,23 @@ export default function Home() {
             {view === 'project' && (
               <div className="grid grid-cols-2 gap-4 w-full max-w-sm mb-8">
                 {projects.map(({ id, imagePath, projectName, subtitle, date }) => (
-                  <ProjectCard
+                  <div
                     key={id}
-                    id={id}
-                    imagePath={imagePath}
-                    projectName={projectName}
-                    subtitle={subtitle}
-                    date={date}
-                  />
+                    data-section={`project-${id}`}
+                    className={`transition-all duration-700 ease-in-out transform ${
+                      visibleSections.includes(`project-${id}`)
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-4'
+                    }`}
+                  >
+                    <ProjectCard
+                      id={id}
+                      imagePath={imagePath}
+                      projectName={projectName}
+                      subtitle={subtitle}
+                      date={date}
+                    />
+                  </div>
                 ))}
               </div>
             )}
@@ -107,12 +140,21 @@ export default function Home() {
             {view === 'experience' && (
               <div className="grid grid-cols-1 gap-4 w-full max-w-sm mb-8">
                 {experiences.map(({ id, title, organization, date }) => (
-                  <ExperienceCard
+                  <div
                     key={id}
-                    title={title}
-                    organization={organization}
-                    date={date}
-                  />
+                    data-section={`experience-${id}`}
+                    className={`transition-all duration-700 ease-in-out transform ${
+                      visibleSections.includes(`experience-${id}`)
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-4'
+                    }`}
+                  >
+                    <ExperienceCard
+                      title={title}
+                      organization={organization}
+                      date={date}
+                    />
+                  </div>
                 ))}
               </div>
             )}

@@ -31,7 +31,7 @@ export default function ProjectDetails({ params }: Props) {
   }
 
   return (
-    <div className="w-full h-full md:max-w-[400px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] bg-white flex flex-col items-center justify-start gap-y-8 px-8">
+    <div className="w-full h-full md:max-w-[400px] bg-white flex flex-col items-center justify-start gap-y-8 px-8">
       {/* Header */}
       <div className="w-full flex items-center gap-4 pt-6">
         <Link href="#" className="p-2 hover:bg-gray-100 rounded-full" onClick={handleBack}>
