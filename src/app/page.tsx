@@ -39,7 +39,7 @@ export default function Home() {
   }, [visibleSections]);
 
   return (
-    <main className="w-full h-full md:max-w-[400px] bg-white flex flex-col items-center justify-start gap-y-8">
+    <main className="w-full h-full bg-white flex flex-col items-center justify-start gap-y-8">
       <div className="w-full">
         {/* Header Background */}
         <div className="h-40 bg-[#406CAE] relative border-b-4 border-black" />
