@@ -115,7 +115,7 @@ export default function Home() {
             {/* Dynamic Content */}
             {view === 'project' && (
               <div className="grid grid-cols-2 gap-4 w-full max-w-sm mb-8">
-                {projects.map(({ id, imagePath, projectName, subtitle, date }) => (
+                {projects.slice().reverse().map(({ id, imagePath, projectName, subtitle, date }) => (
                   <div
                     key={id}
                     data-section={`project-${id}`}
@@ -139,7 +139,7 @@ export default function Home() {
 
             {view === 'experience' && (
               <div className="grid grid-cols-1 gap-4 w-full max-w-sm mb-8">
-                {experiences.map(({ id, title, organization, date }) => (
+                {experiences.slice().reverse().map(({ id, title, organization, date }) => (
                   <div
                     key={id}
                     data-section={`experience-${id}`}
