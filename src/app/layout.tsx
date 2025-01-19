@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`w-full h-full bg-slate-100 flex justify-center items-center ${poppins.className}`}>{children}</body>
+      <body className={`w-full h-full bg-white flex justify-center items-center ${poppins.className}`}>{children}</body>
     </html>
   )
 }

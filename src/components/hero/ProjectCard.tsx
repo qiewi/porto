@@ -34,12 +34,12 @@ export default function ProjectCard({ id, imagePath, projectName, subtitle, date
       </div>
       <div className="flex justify-between flex-row items-center mt-4">
         <div className="flex flex-col text-[10px] items-start">
-          <h3 className="font-semibold mb-1">{projectName}</h3>
-          <h4 className="text-[10px] text-gray-500">{subtitle}</h4>
+          <h3 className="font-semibold">{projectName}</h3>
+          <h4 className="text-[8px] text-gray-500">{subtitle}</h4>
         </div>
         <div className="flex flex-col text-[10px] items-end">
-          <h3 className="font-semibold mb-1">{date}</h3>
-          <h4 className="text-[10px] text-gray-500">Created</h4>
+          <h3 className="font-semibold">{date}</h3>
+          <h4 className="text-[8px] text-gray-500">Created</h4>
         </div>
       </div>
     </div>
