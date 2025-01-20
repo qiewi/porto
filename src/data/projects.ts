@@ -14,6 +14,16 @@ export interface ProjectData {
   
   export const projects: ProjectData[] = [
     {
+      id: "bandung-bondowoso",
+      imagePath: "/Images/projects/bandung-bondowoso.png",
+      projectName: "Candi Builder",
+      subtitle: "CLI Program",
+      date: "14/04/23",
+      description: "A program that can have CRUD operations for csv files in CLI using Python.",
+      githubLink: "https://github.com/qiewi/Bandung-Bondowoso-Candi-Builder",
+      techStack: ["Python"],
+    },
+    {
       id: "project-do-nation",
       imagePath: "/Images/projects/donation.png",
       projectName: "Do-Nation",
