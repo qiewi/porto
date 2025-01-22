@@ -90,10 +90,18 @@ export default function Home() {
             {/* Contact Button */}
             <Button
               className="w-full max-w-sm bg-yellow-400 text-white mb-6 justify-between py-6 text-xl font-bold"
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/files/Rizqi Andhika - CV.pdf'; 
+                link.download = 'Rizqi Andhika - CV.pdf'; 
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
             >
-              Contact Now
-              <MessageCircle />
+              Download CV
             </Button>
+
 
             {/* Navigation Buttons */}
             <div className="max-w-sm w-full mb-6 flex flex-row items-start justify-start gap-2">
