@@ -5,7 +5,7 @@ import ProfilePhoto from '@/Images/profile.jpg';
 import { projects } from '@/data/projects';
 import { experiences } from '@/data/experiences';
 import Image from 'next/image';
-import { MessageCircle } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import StatsCard from '@/components/hero/StatsCard';
 import ProjectCard from '@/components/hero/ProjectCard';
@@ -89,18 +89,20 @@ export default function Home() {
 
             {/* Contact Button */}
             <Button
-              className="w-full max-w-sm bg-yellow-400 text-white mb-6 justify-between py-6 text-xl font-bold"
+              className="w-full max-w-sm bg-yellow-400 text-white mb-6 justify-between py-6 text-xl font-bold flex items-center"
               onClick={() => {
                 const link = document.createElement('a');
-                link.href = '/files/Rizqi Andhika - CV.pdf'; 
-                link.download = 'Rizqi Andhika - CV.pdf'; 
+                link.href = '/files/Rizqi Andhika - CV.pdf'; // Path to your CV file
+                link.download = 'Rizqi Andhika - CV.pdf'; // Name for the downloaded file
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
               }}
             >
-              Download CV
+              <span>Download CV</span>
+              <FileText className="w-12 h-12" />
             </Button>
+
 
 
             {/* Navigation Buttons */}
