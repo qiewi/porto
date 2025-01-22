@@ -179,17 +179,6 @@ export interface ProjectData {
       techStack: ["NextJS", "TypeScript", "Tailwind CSS"],
     },
     {
-      id: "sure-project",
-      imagePath: "/Images/projects/sure-project.png",
-      projectName: "SURE",
-      subtitle: "Recommendation System",
-      date: "22/12/24",
-      description: "A website that recommends university based on the user's score and major preference.",
-      websiteLink: "https://sure-project.vercel.app/",
-      githubLink: "https://github.com/qiewi/sure-project",
-      techStack: ["NextJS", "TypeScript", "Tailwind CSS"],
-    },
-    {
       id: "intrive-mobile",
       imagePath: "/Images/projects/intrive-mobile.png",
       projectName: "Intrive Mobile",
